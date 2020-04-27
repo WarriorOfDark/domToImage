@@ -1,11 +1,19 @@
 <!DOCTYPE html>
+<head>
 <style>
   #demo {
     background-image: url('https://static.devfdg.net/static/images/activity/common/twitter.svg');
   }
 </style>
+</head>
 <body>
   <div id="demo" style="position:fixed;color: greenyellow;height:30px;width:90px">Hello word</div>
+  <img id="container" style="margin-top:50px;"/>
 </body>
 <script src="domToImage.js"></script>
+<script>
+  domtoimage.toPng(document.getElementById('demo')).then(value =>{
+    document.getElementById('container').src =value;
+  })
+</script>
 </html>
