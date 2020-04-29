@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<html>
 <head>
 <style>
   #demo {
-    background-image: url('https://static.devfdg.net/static/images/activity/common/twitter.svg');
+    background: url('https://static.devfdg.net/static/images/activity/referral/bg_share375.png');
   }
 </style>
 </head>
@@ -12,8 +12,15 @@
 </body>
 <script src="domToImage.js"></script>
 <script>
-  domtoimage.toJpeg(document.getElementById('demo')).then(value =>{
-    document.getElementById('container').src =value;
+  const download = document.createElement('a');
+  document.getElementById('demo').onclick = function(){
+    domtoimage.toJpeg(document.getElementById('demo')).then(value =>{
+    download && download.setAttribute('href', value || '');
+    download && (download.download = 'qrcode.jpeg');
+    document.body && document.body.append(download);
+    download && download.click();
+    document.body && document.body.removeChild(download);
   })
+  }
 </script>
 </html>
