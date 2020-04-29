@@ -3,18 +3,20 @@
 <style>
   #demo {
     background: url('https://static.devfdg.net/static/images/activity/referral/bg_share375.png');
+    background-size: 100%;
   }
 </style>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" class="next-head">
 </head>
 <body>
-  <div id="demo" style="position:fixed;color: greenyellow;height:30px;width:90px">Hello word</div>
+  <div id="demo" style="position:fixed;color: greenyellow;height:500px;width:300px">Hello word</div>
   <img id="container" style="margin-top:50px;"/>
 </body>
 <script src="domToImage.js"></script>
 <script>
   const download = document.createElement('a');
   document.getElementById('demo').onclick = function(){
-    domtoimage.toJpeg(document.getElementById('demo')).then(value =>{
+    domtoimage.toJpeg(document.getElementById('demo'),{scale:10}).then(value =>{
     download && download.setAttribute('href', value || '');
     download && (download.download = 'qrcode.jpeg');
     document.body && document.body.append(download);
